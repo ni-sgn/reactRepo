@@ -1,2 +1,3 @@
 this is a first attemt of branching
 git reset HEAD <file> //to unstage the file
+want to merge
