@@ -3,7 +3,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {increment,decrement} from './actions'
 
+
+
 function App(props) {
+  console.log(props)
   return (
     <div className="App">
       <h1>{props.counter}</h1>
@@ -23,8 +26,12 @@ function App(props) {
 //think about this...(selectors)
 function mapStateToProps(state)
 {
-  console.log('state', state)
   return state.counter
+}
+
+function mapdispatchtoprops()
+{
+
 }
 
 //This is weird...

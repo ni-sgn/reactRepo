@@ -6,7 +6,7 @@ import counterReducer from './counterReducer'
 //therefore this insdex.js is main reducer file that
 //combines every little reducers 
 export default combineReducers({
-    counter: counterReducer
+    counter: counterReducer,
 })
 
 

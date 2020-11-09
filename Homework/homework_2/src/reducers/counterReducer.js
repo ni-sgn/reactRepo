@@ -1,6 +1,6 @@
 //every reducer needs its state set???
 const initialState = {
-    counter : 0
+    counter : 1
 }
 
 const counterReducer = (state=initialState,action) =>
@@ -8,7 +8,7 @@ const counterReducer = (state=initialState,action) =>
     //type is a must, payload isn't
     //this is a custom action?
     //destruqturizacia???
-    const {type,payload}  = action
+    const {type,payload}  = action //I get this syntax, althought it feels weird at first, assigning values to the certain members of a list which are taken from 'action' list....
     
 switch(type)
 {
@@ -24,11 +24,11 @@ switch(type)
     //their actual functionality reducing types to their implementation
     case 'ADD_NUMBER':
         return {
-            counter: state.counter + payload
+            counter: state.counter + payload //what if the payload is used in another action too??
         }
         
     default:
-        break
+        return state
 }
 }
 
