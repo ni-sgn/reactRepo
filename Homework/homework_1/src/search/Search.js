@@ -13,11 +13,11 @@ function Search(props) {
               id='add-button'
               onClick={props.showAddForm}
             >
-              დამატება
+              Insert
             </button>
           </div>
           <input
-            placeholder='ძებნა'
+            placeholder='Look-UP'
             type='text'
             className='form-control'
             id='search'

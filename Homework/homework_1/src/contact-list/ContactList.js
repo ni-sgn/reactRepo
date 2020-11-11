@@ -6,7 +6,7 @@ class ContactList extends Component{
 
    render(){
     return <div className='container'>
-        <h4>კონტაქტები</h4>
+        <h4>Hit List</h4>
         <hr />
         <br />
             <div>

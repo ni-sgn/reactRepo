@@ -1,16 +1,19 @@
 import React from 'react'
 import './ContactListItem.css'
 
-function ContactListItem({contact:{id,name}, removeContact, toggleEditForm}){
-        return <div key={id} className='card mt-3'>
+function ContactListItem({contact, removeContact, toggleEditForm}){
+        return <div key={contact.id} className='card mt-3'>
         <div className='card-body'>
-        {name}
-        <button className='btn btn-success float-right ml-2'
-         onClick={()=>toggleEditForm(id)} // it needs () in the end here for some reason????????
-          >Edit</button>
+          <p className='text-monospace'>Name: {contact.name} </p>
+          <p className='text-monospace'>Phone: {contact.phone} </p>
+          <p className='text-monospace'>Email: {contact.email} </p>
+        
         <button className='btn btn-danger float-right' 
-        onClick={()=>removeContact(id)}
-        >X</button>
+          onClick={()=>removeContact(contact.id)}
+        >X</button> 
+        <button className='btn btn-primary float-right mr-2'
+         onClick={()=>toggleEditForm(contact.id)} // it needs () in the end here for some reason????????
+          >Edit</button>
         </div>
     </div>
     

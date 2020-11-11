@@ -7,6 +7,21 @@ import Search from './search/Search'
 import * as db from './data'
 import './App.css'
 
+
+//looks like this is a components on its own
+//but when we are making components in different files
+//we have to give the file same name as component... so that react knows how to find that component
+//nah.. I don't think component should have same name as its file but its more convenient I think...
+function CustomHeader(props)
+{
+  return( <> 
+      <Header/>
+        <Search
+        searchValue={props.searchValue}
+        handleSearch={props.handleSearch}
+        showAddForm={props.hendleShowAddForm}
+      /> </>)
+}
 class App extends React.Component {
 
   state = {
@@ -80,17 +95,20 @@ class App extends React.Component {
     this.setState({contacts: [...updatedState, contact]})
   }
 
+  /*
+  I can't define function like this for some reason
+  function unify(){} 
+  */
+
+
+
   render() {
     if(this.state.addForm)
     {
       return (
         <>
-        <Header />
-        <Search
-          searchValue={this.state.searchValue}
-          handleSearch={this.handleSearch}
-          showAddForm={this.hendleShowAddForm}
-        />
+        {/*So that we don't have to repeat a code segment*/}
+        <CustomHeader searchValue={this.state.searchValue} handleSearch={this.handleSearch}  showAddForm={this.hendleShowAddForm}/>
          <AddContact 
           close={this.handleClose} 
           handleAddContact = {this.handleAddContact}/>
@@ -101,12 +119,7 @@ class App extends React.Component {
     {
       return(
       <>
-      <Header />
-        <Search
-          searchValue={this.state.searchValue}
-          handleSearch={this.handleSearch}
-          showAddForm={this.hendleShowAddForm}
-        />
+      <CustomHeader searchValue={this.state.searchValue} handleSearch={this.handleSearch}  showAddForm={this.hendleShowAddForm}/>
         <EditContact
          close={this.handleClose}
          currentId = {this.state.currentId}
@@ -116,12 +129,8 @@ class App extends React.Component {
     }else{
       return(
         <>
-        <Header />
-        <Search
-          searchValue={this.state.searchValue}
-          handleSearch={this.handleSearch}
-          showAddForm={this.hendleShowAddForm}
-        />
+        {/*looks like anything that returns JSX(component) must start with a capital letter????*/}
+        <CustomHeader searchValue={this.state.searchValue} handleSearch={this.handleSearch}  showAddForm={this.hendleShowAddForm}/>
         <ContactList
             contacts={this.state.contacts}
             handleRemoveContact={this.handleRemoveContact}
