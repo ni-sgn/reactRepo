@@ -44,12 +44,12 @@ class AddContact extends Component {
   render() {
     return (
       <div className='container filter-form'>
-        <h4>კონტაქტის მოდიფიცირება</h4>
+        <h4>Insert Changes</h4>
         <hr />
         <br />
         <form>
           <div className='form-group'>
-            <label htmlFor='exampleInputEmail1'>დასახელება</label>
+            <label htmlFor='exampleInputEmail1'>name</label>
             <input
               type='text'
               className='form-control'
@@ -61,7 +61,7 @@ class AddContact extends Component {
             />
           </div>
           <div class='form-group'>
-            <label for='exampleInputPassword1'>ტელეფონი</label>
+            <label for='exampleInputPassword1'>phone</label>
             <input
               type='text'
               className='form-control'
@@ -72,7 +72,7 @@ class AddContact extends Component {
             />
           </div>
           <div class='form-group'>
-            <label for='exampleInputPassword1'>ელ.ფოსტა</label>
+            <label for='exampleInputPassword1'>email</label>
             <input
               type='text'
               className='form-control'
@@ -84,17 +84,17 @@ class AddContact extends Component {
           </div>
           <button
             type='button'
-            className='btn btn-primary mr-1'
+            className='btn btn-success mr-1'
             onClick={this.edit}
           >
-            მოდიფიცირება
+            Edit
           </button>
           <button
             type='button'
-            className='btn btn-secondary'
+            className='btn btn-danger'
             onClick={() => this.props.close()}
           >
-            დახურვა
+            close
           </button>
         </form>
       </div>
