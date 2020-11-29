@@ -1,34 +1,50 @@
 import React, { Component } from 'react'
-import * as db from './data'
+import * as db from '../../Data/data.js'
 import PropTypes from 'prop-types'
 
 class AddContact extends Component {
   state = {
-    id: Date.now(),
+    id: null,
     name: '',
     phone: '',
     email: '',
   }
-
+  componentDidMount()
+  {
+    const data = db.getContacts()
+    const currentContact = data.filter((x) => x.id === this.props.currentId)
+    this.setState(
+        {
+            id: this.props.currentId,
+            name: currentContact[0].name,
+            phone: currentContact[0].phone,
+            email: currentContact[0].email,
+        }
+    )
+  }
+ 
   hanldeChange = (event) => {
+
+    //weird syntax ...
     const { name, value } = event.target
     this.setState(
       {
         [name]: value
-      },
+      }
     )
   }
 
-  save = () => {
-    db.addContact(this.state)
-    this.props.handleAddContact(this.state)
+  //we need a new functionality in db
+  edit = () => {
+    db.editContact(this.state)
+    this.props.updateState(this.state)
     this.props.close()
   }
 
   render() {
     return (
       <div className='container filter-form'>
-        <h4>Insert a new hit</h4>
+        <h4>Insert Changes</h4>
         <hr />
         <br />
         <form>
@@ -44,8 +60,8 @@ class AddContact extends Component {
               onChange={this.hanldeChange}
             />
           </div>
-          <div class='form-group'>
-            <label for='exampleInputPassword1'>phone</label>
+          <div className='form-group'>
+            <label htmlFor='exampleInputPassword1'>phone</label>
             <input
               type='text'
               className='form-control'
@@ -55,8 +71,8 @@ class AddContact extends Component {
               onChange={this.hanldeChange}
             />
           </div>
-          <div class='form-group'>
-            <label for='exampleInputPassword1'>email</label>
+          <div className='form-group'>
+            <label htmlFor='exampleInputPassword1'>email</label>
             <input
               type='text'
               className='form-control'
@@ -69,9 +85,9 @@ class AddContact extends Component {
           <button
             type='button'
             className='btn btn-success mr-1'
-            onClick={this.save}
+            onClick={this.edit}
           >
-            Insert
+            Edit
           </button>
           <button
             type='button'
@@ -91,5 +107,6 @@ export default AddContact
 AddContact.propTypes = 
 {
   close: PropTypes.func.isRequired,
-  handleAddContact: PropTypes.func.isRequired
+  updateState: PropTypes.func.isRequired,
+
 }

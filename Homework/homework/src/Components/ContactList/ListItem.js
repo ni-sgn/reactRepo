@@ -1,7 +1,7 @@
 import React from 'react'
-import './ContactListItem.css'
+import PropTypes from 'prop-types'
 
-function ContactListItem({contact, removeContact, toggleEditForm}){
+function ListItem({contact, removeContact, toggleEditForm}){
         return <div key={contact.id} className='card mt-3'>
         <div className='card-body'>
           <p className='text-monospace'>Name: {contact.name} </p>
@@ -19,5 +19,13 @@ function ContactListItem({contact, removeContact, toggleEditForm}){
     
 }
 
-export default ContactListItem
+export default ListItem
+
+ListItem.propTypes = 
+{
+    toggleEditForm: PropTypes.func.isRequired,
+    removeContact: PropTypes.func.isRequired,
+    contact : PropTypes.object.isRequired,
+
+}
 

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import './Search.css'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 function Search(props) {
 
@@ -8,7 +8,7 @@ function Search(props) {
         <div className='input-group input-group'>
           <div className='input-group-prepend'>
             <button
-              className='btn btn-outline-secondary'
+              className='btn btn-outline-secondary btn-primary font-weight-bold text-warning'
               type='button'
               id='add-button'
               onClick={props.showAddForm}
@@ -27,6 +27,12 @@ function Search(props) {
         </div>
       </form>
     )
-  }
+}
 
 export default Search
+
+Search.propTypes =
+{
+    searchValue: PropTypes.string.isRequired,
+    handleSearch: PropTypes.func.isRequired,
+}
