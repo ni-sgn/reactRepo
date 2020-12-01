@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import * as db from '../../Data/data.js'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { editContact_action} from '../../redux/actions'
 
-class AddContact extends Component {
+class EditContact extends React.Component {
   state = {
     id: null,
     name: '',
     phone: '',
     email: '',
   }
+
   componentDidMount()
   {
-    const data = db.getContacts()
-    const currentContact = data.filter((x) => x.id === this.props.currentId)
+    const currentContact = this.props.contacts.filter((x) => x.id === this.props.currentId)
     this.setState(
         {
             id: this.props.currentId,
@@ -22,7 +24,7 @@ class AddContact extends Component {
         }
     )
   }
- 
+
   hanldeChange = (event) => {
 
     //weird syntax ...
@@ -35,14 +37,16 @@ class AddContact extends Component {
   }
 
   //we need a new functionality in db
+
   edit = () => {
-    db.editContact(this.state)
-    this.props.updateState(this.state)
+    this.props.editContact_action(this.state)
+    console.log(this.state)
     this.props.close()
   }
 
   render() {
     return (
+      <>
       <div className='container filter-form'>
         <h4>Insert Changes</h4>
         <hr />
@@ -98,15 +102,17 @@ class AddContact extends Component {
           </button>
         </form>
       </div>
+      </>
     )
   }
 }
 
-export default AddContact
 
-AddContact.propTypes = 
+const mapStateToProps = state => ({contacts: state.contacts})
+export default connect(mapStateToProps, {editContact_action})(EditContact)
+
+EditContact.propTypes = 
 {
   close: PropTypes.func.isRequired,
-  updateState: PropTypes.func.isRequired,
-
 }
+

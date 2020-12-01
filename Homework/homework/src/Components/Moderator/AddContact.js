@@ -2,7 +2,8 @@ import React, { Component , useState} from 'react'
 import * as db from '../../Data/data.js'
 import PropTypes from 'prop-types'
 import {useFormik} from 'formik'
-
+import {connect} from 'react-redux'
+import {addContact_action} from '../../redux/actions'
 
 
 
@@ -41,9 +42,7 @@ function AddContact(props) {
             validate, onSubmit(values)
             {
                 const contact = values
-                console.log(contact);
-                db.addContact(contact)
-                props.handleAddContact(contact)
+                props.addContact_action(contact)
                 props.close()
             }
         }
@@ -68,7 +67,7 @@ function AddContact(props) {
               name='name'
               onChange={handleChange}
             />
-            {errors.email ? errors.email : null}
+            <p className='alert-danger'>{errors.name ? errors.name : null}</p>
           </div>
           <div className='form-group'>
             <label htmlFor='exampleInputPassword1'>phone</label>
@@ -80,7 +79,7 @@ function AddContact(props) {
               name='phone'
               onChange={handleChange}
             />
-            {errors.email ? errors.email : null}
+            <p className='alert-danger'>{errors.phone ? errors.phone : null}</p>
           </div>
           <div className='form-group'>
             <label htmlFor='exampleInputPassword1'>email</label>
@@ -92,7 +91,7 @@ function AddContact(props) {
               name='email'
               onChange={handleChange}
             />
-            {errors.email ? errors.email : null}
+            <p className='alert-danger'>{errors.email ? errors.email : null}</p>
           </div>
           <button
             type='submit'
@@ -114,13 +113,11 @@ function AddContact(props) {
 }
 
 
-export default AddContact
+export default connect(null, {addContact_action})(AddContact)
 
 AddContact.propTypes = 
 {
   close: PropTypes.func.isRequired,
-  handleAddContact: PropTypes.func.isRequired,
-  handleAddContact: PropTypes.func.isRequired,
 }
 
 

@@ -16,6 +16,9 @@ export function getContacts(){
  export function editContact(contact)
  {
    const contacts = getContacts()
-   contacts.filter((x) => x.id === contact.id)[0].name = contact.name
+   const contact_target = contacts.filter((x) => x.id === contact.id)[0]
+   contact_target.name = contact.name
+   contact_target.phone = contact.phone
+   contact_target.email = contact.email
    localStorage.setItem('contacts', JSON.stringify(contacts));
  }
