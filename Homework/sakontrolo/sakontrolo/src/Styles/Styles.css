@@ -1,0 +1,72 @@
+html
+{
+    background-color: lightgoldenrodyellow;
+}
+.Gallery
+{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    width: 75%;
+    min-height: 340px;
+    
+    margin: 70px auto 70px auto;
+    padding: 20px 20px 20px 20px;
+    
+    background-color:lightblue;
+    border-style: solid;
+    border-radius:20px;
+    border-color:peachpuff;
+}
+
+.ImageWrapper
+{
+    margin: 17px 0 0 17px;
+    
+}
+
+.ImageWrapper img
+{
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+
+    border-style: solid;
+    border: 10px 10px 10px 10px;
+}
+
+.ImageWrapper input[type="button"]
+{
+    border-radius: 5px;
+    background-color:crimson;
+    margin: 6px auto 6px 35%;
+}
+
+p
+{
+    margin: auto;
+    padding-left: 5px;
+    background-color:beige;
+    border-radius: 5px;
+}
+
+.ImageWrapper :hover
+{
+    border-radius: 5px;
+    border-color:lightgoldenrodyellow;
+}
+
+form
+{
+    margin: 10% auto 20px auto;
+    width: 300px;
+    border-style:groove;
+    padding: 4px 4px 4px 4px;
+    background-color:red;
+}
+
+input[type="file"]
+{
+    
+}
+
