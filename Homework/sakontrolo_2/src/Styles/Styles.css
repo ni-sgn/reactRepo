@@ -1,0 +1,87 @@
+body
+{
+    background-color:lightblue;
+    font-family:monospace;
+    
+}
+.Post
+{
+    
+border-radius: 20px;
+background-color:navajowhite;
+width: 45%;
+min-height: 300px;
+margin: auto;
+border: 10px 10px 10px 10px solid black;
+display:flex;
+flex-direction: column;
+}
+
+.Post .Title
+{
+    text-align:center;
+    background-color:khaki;
+    
+}
+
+.Post .Body
+{
+    margin: auto;
+    margin-top: 17px;
+    width: 90%;
+    background-color:antiquewhite;
+}
+
+.Post .Footer
+{
+    border-top: 2px solid crimson;
+    height: 20px;
+    padding-top: 13px;
+    padding-bottom: 0px;
+    border: 7px 0px 0px 0px solid black;
+}
+
+.Posts :hover
+{
+background-color:aquamarine;   
+cursor:pointer; 
+
+}
+.Posts
+{
+    font-size:large;    
+    list-style-type:none;
+}
+
+.Comments
+{
+border-radius: 20px;
+background-color:navajowhite;
+width: 45%;
+min-height: 300px;
+margin: auto;
+border: 10px 10px 10px 10px solid black;
+display:flex;
+flex-direction: column;
+margin-top:30px;
+}
+
+.SearchBar
+{
+    width: 300px;
+    margin:auto;
+}
+
+.Back 
+{
+    padding:3px;
+    background-color:burlywood;
+    text-align:center;
+}
+.Back:hover
+{
+    font-style:oblique;
+    cursor:pointer;
+    font-weight: 400;
+    transform:scale(1.01);
+}
