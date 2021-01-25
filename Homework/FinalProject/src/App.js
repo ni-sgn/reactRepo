@@ -1,42 +1,28 @@
-import './App.css';
 import React from 'react'
-import {connect} from 'react-redux'
-import {increment,decrement} from './actions'
+import Header from './components/header/Header'
+import { Switch, Route } from 'react-router-dom'
+import Sidebar from './components/sidebar'
+import Contacts from './pages/Contacts'
+import Posts from './pages/Posts'
+import AddContact from './pages/AddContact'
+import './App.css'
 
-
-
-function App(props) {
-  console.log(props)
-  return (
-    <div className="App">
-      <h1>{props.counter}</h1>
-        <button onClick={props.increment}>
-          increment
-        </button>
-        <button onClick={props.decrement}>
-          decrement
-        </button>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <>
+        <Sidebar />
+        <Header />
+        <div className='content'>
+          <Switch>
+            <Route path='/' exact component={Contacts} />
+            <Route path='/addContact' component={AddContact} />
+            <Route path='/posts' component={Posts} />
+          </Switch>
+        </div>
+      </>
+    )
+  }
 }
 
-
-//can use logic here.....
-//like filters and stuff
-//think about this...(selectors)
-function mapStateToProps(state)
-{
-  return state.counter
-}
-
-function mapdispatchtoprops()
-{
-
-}
-
-//This is weird...
-//connect sends data to app
-//mapdispatchtoprops??? second parameter
-//this subscribes app component to a thing ...
-//connect uses shouldcomponendupdate
-export default connect(mapStateToProps, {increment,decrement})(App);
+export default App

@@ -1,27 +1,34 @@
+import * as db from '../data'
 
+import { LOAD_CONTACTS, REMOVE_CONTACT, ADD_CONTACT, SEARCH_CONTACT } from './actionTypes'
 
-
-//I had a bug there, missed 'export' but it didn't pop up as an error
-//which is weird, it made detecting this bug hard...
-//what did App.js even do with increment and decrement without them being exported??? weird
-export const increment = () =>
-{
-    return {
-        type: 'INCREMENT'
-    }
+export const loadContacts = () => {
+  const data = db.getContacts()
+  return {
+    type: LOAD_CONTACTS,
+    payload: data,
+  }
 }
 
-export const decrement = () => {
-    return {
-        type: 'DECREMENT'
-    }
+export const removeContact = (id) => {
+  const data = db.removeContact(id)
+  return {
+    type: REMOVE_CONTACT,
+    payload: data,
+  }
 }
 
-export const addNumber = (number) =>
-{
-    return {
-        type: 'ADD_NUMBER',
-        payload: number
-    }
+export const addContact = (contact) => {
+  db.addContact(contact)
+  return {
+    type: ADD_CONTACT,
+    payload: contact,
+  }
 }
 
+export const searchContact = (value) => {
+  return {
+    type: SEARCH_CONTACT,
+    payload: value,
+  }
+}

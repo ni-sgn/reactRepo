@@ -1,12 +1,6 @@
-//returns one combined reducer???
-import {combineReducers} from 'redux'
-import counterReducer from './counterReducer'
+import { combineReducers } from 'redux'
+import contactsReducer from './contactsReducer'
 
-//oh... this combines reducers
-//therefore this insdex.js is main reducer file that
-//combines every little reducers 
 export default combineReducers({
-    counter: counterReducer,
+  contactObject: contactsReducer,
 })
-
-
